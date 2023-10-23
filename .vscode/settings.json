@@ -1,0 +1,11 @@
+{
+    "cmake.sourceDirectory": "/home/psychlone/os/pintos",
+    "files.associations": {
+        "pte.h": "c",
+        "loader.h": "c",
+        "stdio.h": "c",
+        "kbd.h": "c",
+        "timer.h": "c",
+        "exception.h": "c"
+    }
+}

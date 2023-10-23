@@ -64,6 +64,7 @@ static char **read_command_line (void);
 static char **parse_options (char **argv);
 static void run_actions (char **argv);
 static void usage (void);
+int runCommand(char *command);
 
 #ifdef FILESYS
 static void locate_block_devices (void);
@@ -126,21 +127,27 @@ pintos_init (void)
   locate_block_devices ();
   filesys_init (format_filesys);
 #endif
-
   printf ("Boot complete.\n");
   
   if (*argv != NULL) {
     /* Run actions specified on kernel command line. */
     run_actions (argv);
   } else {
-    // TODO: no command line passed to kernel. Run interactively 
-  }
+    // TODO: no command line passed to kernel. Run interactively
+    
+    printf("Welcome to PintOS!\n");
+    intr_disable();
+    //getting user input
+    process_commands();
+    intr_enable();
+    }
 
   /* Finish up. */
+  printf("Interactive Shell closed...\n");
   shutdown ();
   thread_exit ();
 }
-
+
 /* Clear the "BSS", a segment that should be initialized to
    zeros.  It isn't actually stored on disk or zeroed by the
    kernel loader, so we have to zero it ourselves.
@@ -390,6 +397,104 @@ usage (void)
   shutdown_power_off ();
 }
 
+
+//runs the specified command
+int runCommand(char *command){
+  if(strcmp(command, "whoami") == 0){
+    printf("210125B - Nithika Dias\n");
+    return 0;
+  }
+  else if(strcmp(command, "ram") == 0){
+    printf ("Pintos uses %'"PRIu32" kB RAM\n",init_ram_pages * PGSIZE / 1024);
+    return 0;
+  }
+  else if(strcmp(command,"time") == 0){
+    time_t currentTime = rtc_get_time();
+    printf ("Seconds since Unix epoch is %ld\n",currentTime);
+    return 0;
+  }
+  else if(strcmp(command,"thread") == 0){
+    thread_print_stats();
+    return 0;
+  }
+  else if(strcmp(command,"priority") == 0){
+    int priority = thread_get_priority();
+    printf("Priority is %d\n",priority);
+    return 0;
+  }
+  else if(strcmp(command, "shutdown") == 0){
+    printf("Shutting down PintOS...\n");
+    intr_enable();
+    timer_msleep(1250); //simulate a shutting down sequence
+    shutdown_power_off();
+    return 1;
+  }
+  else if(strcmp(command, "exit") == 0){
+    return 1;
+  }
+  else if(strcmp(command, "help") == 0){
+    printf("These are the available commands:\n");
+    printf("\nwhoami\t\t- Display your name alongside your index number\n");
+    printf("\nshutdown\t- Pintos OS will shutdown and exit the qemu emulator\n");
+    printf("\ntime\t\t- Display the number of seconds passed since Unix epoch\n");
+    printf("\nram\t\t- Display the amount of RAM available for the OS\n");
+    printf("\nthread\t\t- Display thread statistics\n");
+    printf("\npriority\t- Display the thread priority of the current thread\n");
+    printf("\nexit\t\t- Exit the interactive shell\n\n");
+
+    return 0;
+  }
+  else{
+    printf("Command Line Syntax Error\nType \"help\" for a list of commands\n");
+    return 0;
+  }
+}
+
+
+//main function that processes the command line
+void process_commands(void){
+  while(true){
+    printf("210125B>");
+    char inputBuffer[100];
+    int count = 0;
+    while(true){
+      char received_key = input_getc();
+      if(received_key == '\r'){
+        inputBuffer[count] = '\0';
+        printf("\n");
+        break;
+      }
+      else if(received_key == '\b'){
+        if(count == 0){
+          continue;
+        }
+        inputBuffer[count] = '\0';
+        count--;
+        printf("\b");
+        printf(" ");
+        printf("\b");
+      }
+      else{
+        inputBuffer[count] = (char)received_key;
+        count++;
+        printf("%c", received_key);
+      }
+      
+    }
+    
+    //copying input buffer to a new char array
+    char command[count];
+    for (int i = 0; i < count; i++){
+      command[i] = inputBuffer[i];
+    }
+    command[count] = '\0';
+
+    int num = runCommand(command);
+    if(num){
+      break;
+    }
+  } //main while loop ends
+}
 #ifdef FILESYS
 /* Figure out what block devices to cast in the various Pintos roles. */
 static void
