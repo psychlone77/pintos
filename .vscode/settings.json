@@ -1,11 +1,13 @@
 {
     "cmake.sourceDirectory": "/home/psychlone/os/pintos",
     "files.associations": {
+        ".env*": "dotenv",
         "pte.h": "c",
         "loader.h": "c",
         "stdio.h": "c",
         "kbd.h": "c",
         "timer.h": "c",
-        "exception.h": "c"
+        "exception.h": "c",
+        "vaddr.h": "c"
     }
 }
