@@ -1,0 +1,869 @@
+warning: test tests/userprog/exec-bound doesn't count for grading
+warning: test tests/userprog/exec-bound-2 doesn't count for grading
+warning: test tests/userprog/exec-bound-3 doesn't count for grading
+warning: test tests/userprog/sc-boundary-3 doesn't count for grading
+TOTAL TESTING SCORE: 75.0%
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+SUMMARY BY TEST SET
+
+Test Set                                      Pts Max  % Ttl  % Max
+--------------------------------------------- --- --- ------ ------
+tests/userprog/Rubric.functionality            97/108  31.4%/ 35.0%
+tests/userprog/Rubric.robustness               83/ 88  23.6%/ 25.0%
+tests/userprog/no-vm/Rubric                     0/  1   0.0%/ 10.0%
+tests/filesys/base/Rubric                      20/ 30  20.0%/ 30.0%
+--------------------------------------------- --- --- ------ ------
+Total                                                  75.0%/100.0%
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+SUMMARY OF INDIVIDUAL TESTS
+
+Functionality of system calls (tests/userprog/Rubric.functionality):
+	- Test argument passing on Pintos command line.
+	     3/ 3 tests/userprog/args-none
+	     3/ 3 tests/userprog/args-single
+	     3/ 3 tests/userprog/args-multiple
+	     3/ 3 tests/userprog/args-many
+	     3/ 3 tests/userprog/args-dbl-space
+
+	- Test "create" system call.
+	     3/ 3 tests/userprog/create-empty
+	     3/ 3 tests/userprog/create-long
+	     3/ 3 tests/userprog/create-normal
+	     3/ 3 tests/userprog/create-exists
+
+	- Test "open" system call.
+	     3/ 3 tests/userprog/open-missing
+	     3/ 3 tests/userprog/open-normal
+	     3/ 3 tests/userprog/open-twice
+
+	- Test "read" system call.
+	     3/ 3 tests/userprog/read-normal
+	     3/ 3 tests/userprog/read-zero
+
+	- Test "write" system call.
+	     3/ 3 tests/userprog/write-normal
+	     3/ 3 tests/userprog/write-zero
+
+	- Test "close" system call.
+	     3/ 3 tests/userprog/close-normal
+
+	- Test "exec" system call.
+	     5/ 5 tests/userprog/exec-once
+	     5/ 5 tests/userprog/exec-multiple
+	  ** 0/ 5 tests/userprog/exec-arg
+
+	- Test "wait" system call.
+	     5/ 5 tests/userprog/wait-simple
+	     5/ 5 tests/userprog/wait-twice
+
+	- Test "exit" system call.
+	     5/ 5 tests/userprog/exit
+
+	- Test "halt" system call.
+	     3/ 3 tests/userprog/halt
+
+	- Test recursive execution of user programs.
+	    15/15 tests/userprog/multi-recurse
+
+	- Test read-only executable feature.
+	     3/ 3 tests/userprog/rox-simple
+	  ** 0/ 3 tests/userprog/rox-child
+	  ** 0/ 3 tests/userprog/rox-multichild
+
+	- Section summary.
+	     25/ 28 tests passed
+	     97/108 points subtotal
+
+Robustness of system calls (tests/userprog/Rubric.robustness):
+	- Test robustness of file descriptor handling.
+	     2/ 2 tests/userprog/close-stdin
+	     2/ 2 tests/userprog/close-stdout
+	     2/ 2 tests/userprog/close-bad-fd
+	     2/ 2 tests/userprog/close-twice
+	     2/ 2 tests/userprog/read-bad-fd
+	     2/ 2 tests/userprog/read-stdout
+	     2/ 2 tests/userprog/write-bad-fd
+	     2/ 2 tests/userprog/write-stdin
+	     2/ 2 tests/userprog/multi-child-fd
+
+	- Test robustness of pointer handling.
+	     3/ 3 tests/userprog/create-bad-ptr
+	     3/ 3 tests/userprog/exec-bad-ptr
+	     3/ 3 tests/userprog/open-bad-ptr
+	     3/ 3 tests/userprog/read-bad-ptr
+	     3/ 3 tests/userprog/write-bad-ptr
+
+	- Test robustness of buffer copying across page boundaries.
+	     3/ 3 tests/userprog/create-bound
+	     3/ 3 tests/userprog/open-boundary
+	     3/ 3 tests/userprog/read-boundary
+	     3/ 3 tests/userprog/write-boundary
+
+	- Test handling of null pointer and empty strings.
+	     2/ 2 tests/userprog/create-null
+	     2/ 2 tests/userprog/open-null
+	     2/ 2 tests/userprog/open-empty
+
+	- Test robustness of system call implementation.
+	     3/ 3 tests/userprog/sc-bad-arg
+	     3/ 3 tests/userprog/sc-bad-sp
+	     5/ 5 tests/userprog/sc-boundary
+	     5/ 5 tests/userprog/sc-boundary-2
+
+	- Test robustness of "exec" and "wait" system calls.
+	  ** 0/ 5 tests/userprog/exec-missing
+	     5/ 5 tests/userprog/wait-bad-pid
+	     5/ 5 tests/userprog/wait-killed
+
+	- Test robustness of exception handling.
+	     1/ 1 tests/userprog/bad-read
+	     1/ 1 tests/userprog/bad-write
+	     1/ 1 tests/userprog/bad-jump
+	     1/ 1 tests/userprog/bad-read2
+	     1/ 1 tests/userprog/bad-write2
+	     1/ 1 tests/userprog/bad-jump2
+
+	- Section summary.
+	     33/ 34 tests passed
+	     83/ 88 points subtotal
+
+Functionality of features that VM might break (tests/userprog/no-vm/Rubric):
+
+	  ** 0/ 1 tests/userprog/no-vm/multi-oom
+
+	- Section summary.
+	      0/  1 tests passed
+	      0/  1 points subtotal
+
+Functionality of base file system (tests/filesys/base/Rubric):
+	- Test basic support for small files.
+	     1/ 1 tests/filesys/base/sm-create
+	     2/ 2 tests/filesys/base/sm-full
+	     2/ 2 tests/filesys/base/sm-random
+	     2/ 2 tests/filesys/base/sm-seq-block
+	     3/ 3 tests/filesys/base/sm-seq-random
+
+	- Test basic support for large files.
+	     1/ 1 tests/filesys/base/lg-create
+	     2/ 2 tests/filesys/base/lg-full
+	     2/ 2 tests/filesys/base/lg-random
+	     2/ 2 tests/filesys/base/lg-seq-block
+	     3/ 3 tests/filesys/base/lg-seq-random
+
+	- Test synchronized multiprogram access to files.
+	  ** 0/ 4 tests/filesys/base/syn-read
+	  ** 0/ 4 tests/filesys/base/syn-write
+	  ** 0/ 2 tests/filesys/base/syn-remove
+
+	- Section summary.
+	     10/ 13 tests passed
+	     20/ 30 points subtotal
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/userprog/exec-arg FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (exec-arg) begin
+  (args) begin
+  (args) argc = 2
+  (args) argv[0] = 'child-args'
+  (args) argv[1] = 'childarg'
+  (args) argv[2] = null
+  (args) end
+  child-args: exit(0)
+  (exec-arg) end
+  exec-arg: exit(0)
+Differences in `diff -u' format:
+  (exec-arg) begin
+- (args) begin
+- (args) argc = 2
+- (args) argv[0] = 'child-args'
+- (args) argv[1] = 'childarg'
+- (args) argv[2] = null
+- (args) end
+- child-args: exit(0)
+- (exec-arg) end
+- exec-arg: exit(0)
++ exec-arg: exit(-1)
+
+OUTPUT FROM tests/userprog/exec-arg:
+
+Copying tests/userprog/exec-arg to scratch partition...
+Copying tests/userprog/child-args to scratch partition...
+qemu-system-i386 -device isa-debug-exit -drive format=raw,media=disk,index=0,file=/tmp/FO6xzinBVo.dsk -m 4 -net none -nographic -monitor null
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+Booting from Hard Disk...
+PPiinnttooss  hhddaa1
+1
+LLooaaddiinngg.......................
+Kernel command line: -q -f extract run exec-arg
+Pintos booting with 3,968 kB RAM...
+367 pages available in kernel pool.
+367 pages available in user pool.
+Calibrating timer...  209,510,400 loops/s.
+ide0: unexpected interrupt
+hda: 5,040 sectors (2 MB), model "QM00001", serial "QEMU HARDDISK"
+hda1: 198 sectors (99 kB), Pintos OS kernel (20)
+hda2: 4,096 sectors (2 MB), Pintos file system (21)
+hda3: 140 sectors (70 kB), Pintos scratch (22)
+ide1: unexpected interrupt
+filesys: using hda2
+scratch: using hda3
+Formatting file system...done.
+Boot complete.
+Extracting ustar archive from scratch device into file system...
+Putting 'exec-arg' into the file system...
+Putting 'child-args' into the file system...
+Erasing ustar archive...
+Executing 'exec-arg':
+(exec-arg) begin
+exec-arg: exit(-1)
+Execution of 'exec-arg' complete.
+Timer: 59 ticks
+Thread: 7 idle ticks, 52 kernel ticks, 0 user ticks
+hda2 (filesys): 89 reads, 286 writes
+hda3 (scratch): 139 reads, 2 writes
+Console: 963 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/userprog/rox-child FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (rox-child) begin
+  (rox-child) open "child-rox"
+  (rox-child) read "child-rox"
+  (rox-child) write "child-rox"
+  (rox-child) exec "child-rox 1"
+  (child-rox) begin
+  (child-rox) try to write "child-rox"
+  (child-rox) try to write "child-rox"
+  (child-rox) end
+  child-rox: exit(12)
+  (rox-child) write "child-rox"
+  (rox-child) end
+  rox-child: exit(0)
+Differences in `diff -u' format:
+  (rox-child) begin
+  (rox-child) open "child-rox"
+  (rox-child) read "child-rox"
+  (rox-child) write "child-rox"
+  (rox-child) exec "child-rox 1"
+- (child-rox) begin
+- (child-rox) try to write "child-rox"
+- (child-rox) try to write "child-rox"
+- (child-rox) end
+- child-rox: exit(12)
+- (rox-child) write "child-rox"
+- (rox-child) end
+- rox-child: exit(0)
++ rox-child: exit(-1)
+
+OUTPUT FROM tests/userprog/rox-child:
+
+Copying tests/userprog/rox-child to scratch partition...
+Copying tests/userprog/child-rox to scratch partition...
+qemu-system-i386 -device isa-debug-exit -drive format=raw,media=disk,index=0,file=/tmp/77JbPBQls0.dsk -m 4 -net none -nographic -monitor null
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+Booting from Hard Disk...
+PPiinnttooss  hhddaa1
+1
+LLooaaddiinngg.......................
+Kernel command line: -q -f extract run rox-child
+Pintos booting with 3,968 kB RAM...
+367 pages available in kernel pool.
+367 pages available in user pool.
+Calibrating timer...  209,510,400 loops/s.
+ide0: unexpected interrupt
+hda: 5,040 sectors (2 MB), model "QM00001", serial "QEMU HARDDISK"
+hda1: 198 sectors (99 kB), Pintos OS kernel (20)
+hda2: 4,096 sectors (2 MB), Pintos file system (21)
+hda3: 151 sectors (75 kB), Pintos scratch (22)
+ide1: unexpected interrupt
+filesys: using hda2
+scratch: using hda3
+Formatting file system...done.
+Boot complete.
+Extracting ustar archive from scratch device into file system...
+Putting 'rox-child' into the file system...
+Putting 'child-rox' into the file system...
+Erasing ustar archive...
+Executing 'rox-child':
+(rox-child) begin
+(rox-child) open "child-rox"
+(rox-child) read "child-rox"
+(rox-child) write "child-rox"
+(rox-child) exec "child-rox 1"
+rox-child: exit(-1)
+Execution of 'rox-child' complete.
+Timer: 63 ticks
+Thread: 7 idle ticks, 55 kernel ticks, 1 user ticks
+hda2 (filesys): 89 reads, 309 writes
+hda3 (scratch): 150 reads, 2 writes
+Console: 1087 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/userprog/rox-multichild FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (rox-multichild) begin
+  (rox-multichild) open "child-rox"
+  (rox-multichild) read "child-rox"
+  (rox-multichild) write "child-rox"
+  (rox-multichild) exec "child-rox 5"
+  (child-rox) begin
+  (child-rox) try to write "child-rox"
+  (child-rox) exec "child-rox 4"
+  (child-rox) begin
+  (child-rox) try to write "child-rox"
+  (child-rox) exec "child-rox 3"
+  (child-rox) begin
+  (child-rox) try to write "child-rox"
+  (child-rox) exec "child-rox 2"
+  (child-rox) begin
+  (child-rox) try to write "child-rox"
+  (child-rox) exec "child-rox 1"
+  (child-rox) begin
+  (child-rox) try to write "child-rox"
+  (child-rox) try to write "child-rox"
+  (child-rox) end
+  child-rox: exit(12)
+  (child-rox) try to write "child-rox"
+  (child-rox) end
+  child-rox: exit(12)
+  (child-rox) try to write "child-rox"
+  (child-rox) end
+  child-rox: exit(12)
+  (child-rox) try to write "child-rox"
+  (child-rox) end
+  child-rox: exit(12)
+  (child-rox) try to write "child-rox"
+  (child-rox) end
+  child-rox: exit(12)
+  (rox-multichild) write "child-rox"
+  (rox-multichild) end
+  rox-multichild: exit(0)
+Differences in `diff -u' format:
+  (rox-multichild) begin
+  (rox-multichild) open "child-rox"
+  (rox-multichild) read "child-rox"
+  (rox-multichild) write "child-rox"
+  (rox-multichild) exec "child-rox 5"
+- (child-rox) begin
+- (child-rox) try to write "child-rox"
+- (child-rox) exec "child-rox 4"
+- (child-rox) begin
+- (child-rox) try to write "child-rox"
+- (child-rox) exec "child-rox 3"
+- (child-rox) begin
+- (child-rox) try to write "child-rox"
+- (child-rox) exec "child-rox 2"
+- (child-rox) begin
+- (child-rox) try to write "child-rox"
+- (child-rox) exec "child-rox 1"
+- (child-rox) begin
+- (child-rox) try to write "child-rox"
+- (child-rox) try to write "child-rox"
+- (child-rox) end
+- child-rox: exit(12)
+- (child-rox) try to write "child-rox"
+- (child-rox) end
+- child-rox: exit(12)
+- (child-rox) try to write "child-rox"
+- (child-rox) end
+- child-rox: exit(12)
+- (child-rox) try to write "child-rox"
+- (child-rox) end
+- child-rox: exit(12)
+- (child-rox) try to write "child-rox"
+- (child-rox) end
+- child-rox: exit(12)
+- (rox-multichild) write "child-rox"
+- (rox-multichild) end
+- rox-multichild: exit(0)
++ rox-multichild: exit(-1)
+
+OUTPUT FROM tests/userprog/rox-multichild:
+
+Copying tests/userprog/rox-multichild to scratch partition...
+Copying tests/userprog/child-rox to scratch partition...
+qemu-system-i386 -device isa-debug-exit -drive format=raw,media=disk,index=0,file=/tmp/4gHAlJJqTo.dsk -m 4 -net none -nographic -monitor null
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+Booting from Hard Disk...
+PPiinnttooss  hhddaa1
+1
+LLooaaddiinngg.......................
+Kernel command line: -q -f extract run rox-multichild
+Pintos booting with 3,968 kB RAM...
+367 pages available in kernel pool.
+367 pages available in user pool.
+Calibrating timer...  157,081,600 loops/s.
+ide0: unexpected interrupt
+hda: 5,040 sectors (2 MB), model "QM00001", serial "QEMU HARDDISK"
+hda1: 198 sectors (99 kB), Pintos OS kernel (20)
+hda2: 4,096 sectors (2 MB), Pintos file system (21)
+hda3: 151 sectors (75 kB), Pintos scratch (22)
+ide1: unexpected interrupt
+filesys: using hda2
+scratch: using hda3
+Formatting file system...done.
+Boot complete.
+Extracting ustar archive from scratch device into file system...
+Putting 'rox-multichild' into the file system...
+Putting 'child-rox' into the file system...
+Erasing ustar archive...
+Executing 'rox-multichild':
+(rox-multichild) begin
+(rox-multichild) open "child-rox"
+(rox-multichild) read "child-rox"
+(rox-multichild) write "child-rox"
+(rox-multichild) exec "child-rox 5"
+rox-multichild: exit(-1)
+Execution of 'rox-multichild' complete.
+Timer: 60 ticks
+Thread: 8 idle ticks, 52 kernel ticks, 0 user ticks
+hda2 (filesys): 89 reads, 309 writes
+hda3 (scratch): 150 reads, 2 writes
+Console: 1137 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/userprog/exec-missing FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (exec-missing) begin
+  (exec-missing) exec("no-such-file"): -1
+  (exec-missing) end
+  exec-missing: exit(0)
+Differences in `diff -u' format:
+  (exec-missing) begin
+- (exec-missing) exec("no-such-file"): -1
++ (exec-missing) exec("no-such-file"): 4
+  (exec-missing) end
+  exec-missing: exit(0)
+Acceptable output:
+  (exec-missing) begin
+  load: no-such-file: open failed
+  (exec-missing) exec("no-such-file"): -1
+  (exec-missing) end
+  exec-missing: exit(0)
+Differences in `diff -u' format:
+  (exec-missing) begin
+- load: no-such-file: open failed
+- (exec-missing) exec("no-such-file"): -1
++ (exec-missing) exec("no-such-file"): 4
+  (exec-missing) end
+  exec-missing: exit(0)
+Acceptable output:
+  (exec-missing) begin
+  load: no-such-file: open failed
+  no-such-file: exit(-1)
+  (exec-missing) exec("no-such-file"): -1
+  (exec-missing) end
+  exec-missing: exit(0)
+Differences in `diff -u' format:
+  (exec-missing) begin
+- load: no-such-file: open failed
+- no-such-file: exit(-1)
+- (exec-missing) exec("no-such-file"): -1
++ (exec-missing) exec("no-such-file"): 4
+  (exec-missing) end
+  exec-missing: exit(0)
+Acceptable output:
+  (exec-missing) begin
+  load: no-such-file: open failed
+  (exec-missing) exec("no-such-file"): -1
+  no-such-file: exit(-1)
+  (exec-missing) end
+  exec-missing: exit(0)
+Differences in `diff -u' format:
+  (exec-missing) begin
+- load: no-such-file: open failed
+- (exec-missing) exec("no-such-file"): -1
+- no-such-file: exit(-1)
++ (exec-missing) exec("no-such-file"): 4
+  (exec-missing) end
+  exec-missing: exit(0)
+
+OUTPUT FROM tests/userprog/exec-missing:
+
+Copying tests/userprog/exec-missing to scratch partition...
+qemu-system-i386 -device isa-debug-exit -drive format=raw,media=disk,index=0,file=/tmp/3ElnwXNBZP.dsk -m 4 -net none -nographic -monitor null
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+Booting from Hard Disk...
+PPiinnttooss  hhddaa1
+1
+LLooaaddiinngg.......................
+Kernel command line: -q -f extract run exec-missing
+Pintos booting with 3,968 kB RAM...
+367 pages available in kernel pool.
+367 pages available in user pool.
+Calibrating timer...  157,081,600 loops/s.
+ide0: unexpected interrupt
+hda: 5,040 sectors (2 MB), model "QM00001", serial "QEMU HARDDISK"
+hda1: 198 sectors (99 kB), Pintos OS kernel (20)
+hda2: 4,096 sectors (2 MB), Pintos file system (21)
+hda3: 72 sectors (36 kB), Pintos scratch (22)
+ide1: unexpected interrupt
+filesys: using hda2
+scratch: using hda3
+Formatting file system...done.
+Boot complete.
+Extracting ustar archive from scratch device into file system...
+Putting 'exec-missing' into the file system...
+Erasing ustar archive...
+Executing 'exec-missing':
+(exec-missing) begin
+(exec-missing) exec("no-such-file"): 4
+(exec-missing) end
+exec-missing: exit(0)
+Execution of 'exec-missing' complete.
+Timer: 57 ticks
+Thread: 3 idle ticks, 53 kernel ticks, 1 user ticks
+hda2 (filesys): 65 reads, 148 writes
+hda3 (scratch): 71 reads, 2 writes
+Console: 997 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/userprog/no-vm/multi-oom FAILURE:
+
+Kernel panic in run: PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
+Call stack: 0xc00298cf 0xc0023c2f 0xc0023aa9 0xc002bdf1 0xc002d8dd 0xc002d573 0xc0021d05 0xc0021f25 0x804ab93 0x80480c4 0x8048283 0x80489bf
+Translation of call stack:
+In kernel.o:
+0xc00298cf: debug_panic (.../../lib/kernel/debug.c:38)
+0xc0023c2f: block_to_arena (..../../threads/malloc.c:277)
+0xc0023aa9: free (..../../threads/malloc.c:224)
+0xc002bdf1: process_execute (.../../userprog/process.c:82)
+0xc002d8dd: exec (...../userprog/syscall.c:207)
+0xc002d573: syscall_handler (.../../userprog/syscall.c:98)
+0xc0021d05: intr_handler (..../threads/interrupt.c:367)
+0xc0021f25: intr_entry (threads/intr-stubs.S:38)
+In tests/userprog/no-vm/multi-oom:
+0x0804ab93: exec (.../../lib/user/syscall.c:81)
+0x080480c4: spawn_child (...om.c:42 (discriminator 4))
+0x08048283: main (...rog/no-vm/multi-oom.c:134)
+0x080489bf: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
+
+OUTPUT FROM tests/userprog/no-vm/multi-oom:
+
+Copying tests/userprog/no-vm/multi-oom to scratch partition...
+qemu-system-i386 -device isa-debug-exit -drive format=raw,media=disk,index=0,file=/tmp/8x6eSbyQL3.dsk -m 4 -net none -nographic -monitor null
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+Booting from Hard Disk...
+PPiinnttooss  hhddaa1
+1
+LLooaaddiinngg.......................
+Kernel command line: -q -f extract run multi-oom
+Pintos booting with 3,968 kB RAM...
+367 pages available in kernel pool.
+367 pages available in user pool.
+Calibrating timer...  209,510,400 loops/s.
+ide0: unexpected interrupt
+hda: 5,040 sectors (2 MB), model "QM00001", serial "QEMU HARDDISK"
+hda1: 198 sectors (99 kB), Pintos OS kernel (20)
+hda2: 4,096 sectors (2 MB), Pintos file system (21)
+hda3: 83 sectors (41 kB), Pintos scratch (22)
+ide1: unexpected interrupt
+filesys: using hda2
+scratch: using hda3
+Formatting file system...done.
+Boot complete.
+Extracting ustar archive from scratch device into file system...
+Putting 'multi-oom' into the file system...
+Erasing ustar archive...
+Executing 'multi-oom':
+(multi-oom) begin
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+Kernel PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
+Call stack: 0xc00298cf 0xc0023c2f 0xc0023aa9 0xc002bdf1 0xc002d8dd 0xc002d573 0xc0021d05 0xc0021f25 0x804ab93 0x80480c4 0x8048283 0x80489bf.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 148 ticks
+Thread: 27 idle ticks, 62 kernel ticks, 59 user ticks
+hda2 (filesys): 11910 reads, 170 writes
+hda3 (scratch): 82 reads, 2 writes
+Console: 1956 characters output
+Keyboard: 0 keys pressed
+Exception: 24 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/base/syn-read FAILURE:
+
+run: wait for child 1 of 10 returned -2 (expected 0): FAILED
+
+OUTPUT FROM tests/filesys/base/syn-read:
+
+Copying tests/filesys/base/syn-read to scratch partition...
+Copying tests/filesys/base/child-syn-read to scratch partition...
+qemu-system-i386 -device isa-debug-exit -drive format=raw,media=disk,index=0,file=/tmp/FTc84hc8IN.dsk -m 4 -net none -nographic -monitor null
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+Booting from Hard Disk...
+PPiinnttooss  hhddaa1
+1
+LLooaaddiinngg.......................
+Kernel command line: -q -f extract run syn-read
+Pintos booting with 3,968 kB RAM...
+367 pages available in kernel pool.
+367 pages available in user pool.
+Calibrating timer...  209,510,400 loops/s.
+ide0: unexpected interrupt
+hda: 5,040 sectors (2 MB), model "QM00001", serial "QEMU HARDDISK"
+hda1: 198 sectors (99 kB), Pintos OS kernel (20)
+hda2: 4,096 sectors (2 MB), Pintos file system (21)
+hda3: 155 sectors (77 kB), Pintos scratch (22)
+ide1: unexpected interrupt
+filesys: using hda2
+scratch: using hda3
+Formatting file system...done.
+Boot complete.
+Extracting ustar archive from scratch device into file system...
+Putting 'syn-read' into the file system...
+Putting 'child-syn-read' into the file system...
+Erasing ustar archive...
+Executing 'syn-read':
+(syn-read) begin
+(syn-read) create "data"
+(syn-read) open "data"
+(syn-read) write "data"
+(syn-read) close "data"
+(syn-read) exec child 1 of 10: "child-syn-read 0"
+(syn-read) exec child 2 of 10: "child-syn-read 1"
+(syn-read) exec child 3 of 10: "child-syn-read 2"
+(syn-read) exec child 4 of 10: "child-syn-read 3"
+(syn-read) exec child 5 of 10: "child-syn-read 4"
+(syn-read) exec child 6 of 10: "child-syn-read 5"
+(syn-read) exec child 7 of 10: "child-syn-read 6"
+(syn-read) exec child 8 of 10: "child-syn-read 7"
+(syn-read) exec child 9 of 10: "child-syn-read 8"
+(syn-read) exec child 10 of 10: "child-syn-read 9"
+load: child-syn-read: open failed
+load: child-syn-read: open failed
+load: child-syn-read: open failed
+load: child-syn-read: open failed
+load: child-syn-read: open failed
+load: child-syn-read: open failed
+load: child-syn-read: open failed
+load: child-syn-read: open failed
+load: child-syn-read: open failed
+(syn-read) wait for child 1 of 10 returned -2 (expected 0)
+(syn-read) wait for child 1 of 10 returned -2 (expected 0): FAILED
+syn-read: exit(1)
+Execution of 'syn-read' complete.
+Timer: 63 ticks
+Thread: 8 idle ticks, 52 kernel ticks, 3 user ticks
+hda2 (filesys): 113 reads, 324 writes
+hda3 (scratch): 154 reads, 2 writes
+Console: 1996 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/base/syn-write FAILURE:
+
+run: wait for child 1 of 10 returned -2 (expected 0): FAILED
+
+OUTPUT FROM tests/filesys/base/syn-write:
+
+Copying tests/filesys/base/syn-write to scratch partition...
+Copying tests/filesys/base/child-syn-wrt to scratch partition...
+qemu-system-i386 -device isa-debug-exit -drive format=raw,media=disk,index=0,file=/tmp/3mtNblIF5H.dsk -m 4 -net none -nographic -monitor null
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+Booting from Hard Disk...
+PPiinnttooss  hhddaa1
+1
+LLooaaddiinngg.......................
+Kernel command line: -q -f extract run syn-write
+Pintos booting with 3,968 kB RAM...
+367 pages available in kernel pool.
+367 pages available in user pool.
+Calibrating timer...  209,510,400 loops/s.
+ide0: unexpected interrupt
+hda: 5,040 sectors (2 MB), model "QM00001", serial "QEMU HARDDISK"
+hda1: 198 sectors (99 kB), Pintos OS kernel (20)
+hda2: 4,096 sectors (2 MB), Pintos file system (21)
+hda3: 156 sectors (78 kB), Pintos scratch (22)
+ide1: unexpected interrupt
+filesys: using hda2
+scratch: using hda3
+Formatting file system...done.
+Boot complete.
+Extracting ustar archive from scratch device into file system...
+Putting 'syn-write' into the file system...
+Putting 'child-syn-wrt' into the file system...
+Erasing ustar archive...
+Executing 'syn-write':
+(syn-write) begin
+(syn-write) create "stuff"
+(syn-write) exec child 1 of 10: "child-syn-wrt 0"
+(syn-write) exec child 2 of 10: "child-syn-wrt 1"
+(syn-write) exec child 3 of 10: "child-syn-wrt 2"
+(syn-write) exec child 4 of 10: "child-syn-wrt 3"
+(syn-write) exec child 5 of 10: "child-syn-wrt 4"
+(syn-write) exec child 6 of 10: "child-syn-wrt 5"
+(syn-write) exec child 7 of 10: "child-syn-wrt 6"
+(syn-write) exec child 8 of 10: "child-syn-wrt 7"
+(syn-write) exec child 9 of 10: "child-syn-wrt 8"
+(syn-write) exec child 10 of 10: "child-syn-wrt 9"
+load: child-syn-wrt: open failed
+load: child-syn-wrt: open failed
+load: child-syn-wrt: open failed
+load: child-syn-wrt: open failed
+load: child-syn-wrt: open failed
+load: child-syn-wrt: open failed
+load: child-syn-wrt: open failed
+load: child-syn-wrt: open failed
+load: child-syn-wrt: open failed
+(syn-write) wait for child 1 of 10 returned -2 (expected 0)
+(syn-write) wait for child 1 of 10 returned -2 (expected 0): FAILED
+syn-write: exit(1)
+Execution of 'syn-write' complete.
+Timer: 63 ticks
+Thread: 7 idle ticks, 52 kernel ticks, 4 user ticks
+hda2 (filesys): 108 reads, 332 writes
+hda3 (scratch): 155 reads, 2 writes
+Console: 1925 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/base/syn-remove FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (syn-remove) begin
+  (syn-remove) create "deleteme"
+  (syn-remove) open "deleteme"
+  (syn-remove) remove "deleteme"
+  (syn-remove) write "deleteme"
+  (syn-remove) seek "deleteme" to 0
+  (syn-remove) read "deleteme"
+  (syn-remove) close "deleteme"
+  (syn-remove) end
+Differences in `diff -u' format:
+  (syn-remove) begin
+  (syn-remove) create "deleteme"
+  (syn-remove) open "deleteme"
+  (syn-remove) remove "deleteme"
+- (syn-remove) write "deleteme"
+- (syn-remove) seek "deleteme" to 0
+- (syn-remove) read "deleteme"
+- (syn-remove) close "deleteme"
+- (syn-remove) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/filesys/base/syn-remove:
+
+Copying tests/filesys/base/syn-remove to scratch partition...
+qemu-system-i386 -device isa-debug-exit -drive format=raw,media=disk,index=0,file=/tmp/SvNecpjtWq.dsk -m 4 -net none -nographic -monitor null
+c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
+Booting from Hard Disk...
+PPiinnttooss  hhddaa1
+1
+LLooaaddiinngg.......................
+Kernel command line: -q -f extract run syn-remove
+Pintos booting with 3,968 kB RAM...
+367 pages available in kernel pool.
+367 pages available in user pool.
+Calibrating timer...  209,510,400 loops/s.
+ide0: unexpected interrupt
+hda: 5,040 sectors (2 MB), model "QM00001", serial "QEMU HARDDISK"
+hda1: 198 sectors (99 kB), Pintos OS kernel (20)
+hda2: 4,096 sectors (2 MB), Pintos file system (21)
+hda3: 76 sectors (38 kB), Pintos scratch (22)
+ide1: unexpected interrupt
+filesys: using hda2
+scratch: using hda3
+Formatting file system...done.
+Boot complete.
+Extracting ustar archive from scratch device into file system...
+Putting 'syn-remove' into the file system...
+Erasing ustar archive...
+Executing 'syn-remove':
+(syn-remove) begin
+(syn-remove) create "deleteme"
+(syn-remove) open "deleteme"
+(syn-remove) remove "deleteme"
+syn-remove: exit(-1)
+Execution of 'syn-remove' complete.
+Timer: 57 ticks
+Thread: 4 idle ticks, 52 kernel ticks, 1 user ticks
+hda2 (filesys): 86 reads, 163 writes
+hda3 (scratch): 75 reads, 2 writes
+Console: 1019 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
