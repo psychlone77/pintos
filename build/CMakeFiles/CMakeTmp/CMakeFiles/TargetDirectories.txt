@@ -1,3 +1,0 @@
-/home/psychlone/os/pintos/build/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_c8922.dir
-/home/psychlone/os/pintos/build/CMakeFiles/CMakeTmp/CMakeFiles/edit_cache.dir
-/home/psychlone/os/pintos/build/CMakeFiles/CMakeTmp/CMakeFiles/rebuild_cache.dir
