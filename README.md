@@ -1,3 +1,6 @@
+# CS2043 - Operating Systems
+This repo was forked from https://github.com/jhu-cs318/pintos.git for the purposes of this assignment.
+
 # Pintos
 Labs for undergraduate OS class (600.318) at Johns Hopkins. [Pintos](http://pintos-os.org) 
 is a teaching operating system for x86, challenging but not overwhelming, small
